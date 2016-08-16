@@ -1,0 +1,90 @@
+<!DOCTYPE html><html><head><title>Drools Commands</title><meta charset='utf-8'><link href='https://d31qtcb7c58z3n.cloudfront.net/res-min/themes/marxico.css' rel='stylesheet'><style></style></head><body><div id='preview-contents' class='note-content'>
+                        
+                    
+
+
+
+<h3 id="drools-commands">Drools Commands</h3>
+
+
+
+<h5 id="batchexecutioncommand">BatchExecutionCommand</h5>
+
+<p>包含其他多个命令的命令，一个API请求最外层的参数，有以下属性：</p>
+
+<ul><li>lookup, 每次跟规则引擎会话都会有一个session id</li>
+<li>commands，执行的若干命令</li>
+</ul>
+
+<p>XML output</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-xml hljs">    <span class="hljs-tag">&lt;<span class="hljs-title">batch-execution</span> <span class="hljs-attribute">lookup</span>=<span class="hljs-value">'ksession1'</span>&gt;</span><br>        //other commands<br>    <span class="hljs-tag">&lt;/<span class="hljs-title">batch-execution</span>&gt;</span><br></code></pre>
+
+
+
+<h5 id="insertobjectcommand">InsertObjectCommand</h5>
+
+<p>插入的数据，这些数据需要跟drools的数据对象对应，包括每个数据项的数据类型，否则会报错 <br>
+XML output</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-xml hljs">    <span class="hljs-tag">&lt;<span class="hljs-title">insert</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-title">test.account</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-title">balance</span>&gt;</span>123.45<span class="hljs-tag">&lt;/<span class="hljs-title">balance</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-title">name</span>&gt;</span>Jack<span class="hljs-tag">&lt;/<span class="hljs-title">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-title">test.account</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-title">insert</span>&gt;</span><br></code></pre>
+
+
+
+<h5 id="retractcommand">RetractCommand</h5>
+
+<p>收回某个数据，需要提供收回数据对象的handle</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-xml hljs">    <span class="hljs-tag">&lt;<span class="hljs-title">retract</span> <span class="hljs-attribute">fact-handle</span>=<span class="hljs-value">'0:234:345:456:567'</span> /&gt;</span><br></code></pre>
+
+
+
+<h5 id="modifycommand">ModifyCommand</h5>
+
+<p>更新某个数据对象，需要提供更新对象的handle</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-xml hljs">    <span class="hljs-tag">&lt;<span class="hljs-title">modify</span> <span class="hljs-attribute">fact-handle</span>=<span class="hljs-value">'0:234:345:456:567'</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-title">set</span> <span class="hljs-attribute">accessor</span>=<span class="hljs-value">'balance'</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">10000.00</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-title">set</span> <span class="hljs-attribute">accessor</span>=<span class="hljs-value">'name'</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">'Jone'</span> /&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-title">modify</span>&gt;</span><br></code></pre>
+
+
+
+<h5 id="getobjectcommand">GetObjectCommand</h5>
+
+<p>获取某个对象，需要提供数据对象的handle</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-xml hljs">    <span class="hljs-tag">&lt;<span class="hljs-title">get-object</span> <span class="hljs-attribute">fact-handle</span>=<span class="hljs-value">'0:234:345:456:567'</span> <span class="hljs-attribute">out-indentifier</span>=<span class="hljs-value">'jone'</span> /&gt;</span><br></code></pre>
+
+
+
+<h5 id="insertelementscommand">InsertElementsCommand</h5>
+
+<p>插入批量插入多个对象</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-xml hljs">    <span class="hljs-tag">&lt;<span class="hljs-title">insert-elements</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-title">test.account</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-title">balance</span>&gt;</span>999.99<span class="hljs-tag">&lt;/<span class="hljs-title">balance</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-title">name</span>&gt;</span>Jack<span class="hljs-tag">&lt;/<span class="hljs-title">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-title">test.account</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-title">test.account</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-title">balance</span>&gt;</span>111111.11<span class="hljs-tag">&lt;/<span class="hljs-title">balance</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-title">name</span>&gt;</span>Lucy<span class="hljs-tag">&lt;/<span class="hljs-title">name</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-title">test.account</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-title">insert-elements</span>&gt;</span><br></code></pre>
+
+
+
+<h5 id="startprocesscommand">StartProcessCommand</h5>
+
+<p>开始执行的业务流程id</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-xml hljs">    <span class="hljs-tag">&lt;<span class="hljs-title">start-process</span> <span class="hljs-attribute">processId</span>=<span class="hljs-value">'test.account.workflow.AccountWorkFlow'</span> /&gt;</span><br></code></pre>
+
+<p>完整实例</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-xml hljs"><span class="hljs-tag">&lt;<span class="hljs-title">batch-execution</span> <span class="hljs-attribute">lookup</span>=<span class="hljs-value">"ksession1"</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-title">insert</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-title">cloudoc.glucose.Patient</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-title">isDiabetes</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-title">isDiabetes</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-title">isInsulinUsed</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-title">isInsulinUsed</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-title">cloudoc.glucose.Patient</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-title">insert</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-title">insert</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-title">cloudoc.glucose.Record</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>5.0<span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-title">acktype</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-title">acktype</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-title">cloudoc.glucose.Record</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-title">insert</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-title">insert</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-title">cloudoc.glucose.Record</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>3.0<span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-title">acktype</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-title">acktype</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-title">cloudoc.glucose.Record</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-title">insert</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-title">insert</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-title">cloudoc.glucose.Record</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>10.2<span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-title">acktype</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-title">acktype</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-title">cloudoc.glucose.Record</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-title">insert</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-title">insert</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-title">cloudoc.glucose.Record</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>18.5<span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-title">acktype</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-title">acktype</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-title">cloudoc.glucose.Record</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-title">insert</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-title">insert</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-title">cloudoc.glucose.Statistic</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-title">fbgCount</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-title">fbgCount</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-title">fbgNormalCount</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-title">fbgNormalCount</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-title">twoHpgCount</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-title">twoHpgCount</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-title">twoHpgNormalCount</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-title">twoHpgNormalCount</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-title">hypoglycemiaCount</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-title">hypoglycemiaCount</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-title">hyperglycemiaCount</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-title">hyperglycemiaCount</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-title">averageFBG</span>&gt;</span>0.0<span class="hljs-tag">&lt;/<span class="hljs-title">averageFBG</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-title">fbgStandardDeviation</span>&gt;</span>0.0<span class="hljs-tag">&lt;/<span class="hljs-title">fbgStandardDeviation</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-title">fbgVariance</span>&gt;</span>0.0<span class="hljs-tag">&lt;/<span class="hljs-title">fbgVariance</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-title">averageTwoHpg</span>&gt;</span>0.0<span class="hljs-tag">&lt;/<span class="hljs-title">averageTwoHpg</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-title">twoHpgStandardDeviation</span>&gt;</span>0.0<span class="hljs-tag">&lt;/<span class="hljs-title">twoHpgStandardDeviation</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-title">twoHpgVariance</span>&gt;</span>0.0<span class="hljs-tag">&lt;/<span class="hljs-title">twoHpgVariance</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-title">cloudoc.glucose.Statistic</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-title">insert</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-title">start-process</span> <span class="hljs-attribute">processId</span>=<span class="hljs-value">"glucose.glucoseWorkFlow2"</span>/&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-title">fire-all-rules</span>/&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-title">get-objects</span> <span class="hljs-attribute">out-identifier</span>=<span class="hljs-value">"objects"</span>/&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-title">batch-execution</span>&gt;</span><br></code></pre></div></body></html>
