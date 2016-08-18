@@ -31,7 +31,7 @@
 ####规则名称
 每个规则文件的名称唯一
 ####attributes
-![Rule Attributes](./images/rule_attributes.png)
+![Rule Attributes](../images/rule_attributes.png)
 * no-loop true, 当改变一个值不会触发该规则再次之行
 * ruleflow-gorup, 每个规则有一个规则分组，某一个规则分组执行的时候，相应的所有规则都会被唤醒
 * lock-on-active, ...
@@ -78,9 +78,9 @@ Drools中的核心功能，当满足When所给的条件的时候，就执行Then
 		....
 	}
 ```
-![Alt text](./images/data.png)
+![Alt text](../images/data.png)
 ###业务流程
-![Alt text](./images/workflow.png)
+![Alt text](../images/workflow.png)
 一个业务流程拥有唯一的名称，供外部API调用时提供；
 每个业务流程除了开始和结束节点，中间有若干个ruleflow，每个ruleflow执行完之后即执行下一个业务，直到结束
 
