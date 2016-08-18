@@ -1,4 +1,4 @@
-##什么是规则引擎？
+## 什么是规则引擎？
 >是一种嵌入在应用程序中的组件，实现了将业务决策从应用程序代码中分离出来，并使用预定义的语义模块编写业务决策。接受数据输入，解释业务规则，并根据业务规则做出业务决策。 - [百度百科](http://baike.baidu.com/view/1636209.htm)
 ##规则实现
 一个规则文件以.drl扩展名结尾，完整的文件结构如下：
@@ -31,7 +31,7 @@
 ####规则名称
 每个规则文件的名称唯一
 ####attributes
-![Rule Attributes](./rule_attributes.png)
+![Rule Attributes](./images/rule_attributes.png)
 * no-loop true, 当改变一个值不会触发该规则再次之行
 * ruleflow-gorup, 每个规则有一个规则分组，某一个规则分组执行的时候，相应的所有规则都会被唤醒
 * lock-on-active, ...
@@ -78,9 +78,9 @@ Drools中的核心功能，当满足When所给的条件的时候，就执行Then
 		....
 	}
 ```
-![Alt text](./data.png)
+![Alt text](./images/data.png)
 ###业务流程
-![Alt text](./workflow.png)
+![Alt text](./images/workflow.png)
 一个业务流程拥有唯一的名称，供外部API调用时提供；
 每个业务流程除了开始和结束节点，中间有若干个ruleflow，每个ruleflow执行完之后即执行下一个业务，直到结束
 
